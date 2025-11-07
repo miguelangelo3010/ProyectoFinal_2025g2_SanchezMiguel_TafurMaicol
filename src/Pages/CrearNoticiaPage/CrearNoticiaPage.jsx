@@ -1,5 +1,6 @@
 // src/pages/CrearNoticiaPage.jsx
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
@@ -15,6 +16,7 @@ const CrearNoticiaPage = () => {
   const [imagen, setImagen] = useState(null);
   const [cargando, setCargando] = useState(false);
   const [mensaje, setMensaje] = useState("");
+  const navigate = useNavigate();
 
   // ✅ Detectar usuario autenticado
   useEffect(() => {
@@ -22,7 +24,7 @@ const CrearNoticiaPage = () => {
       if (user) {
         setUsuario(user);
       } else {
-        window.location.href = "/login";
+        navigate("/login");
       }
     });
     return () => unsubscribe();
@@ -64,7 +66,7 @@ const CrearNoticiaPage = () => {
       setContenido("");
       setImagen(null);
       setTimeout(() => {
-        window.location.href = "/panel/reportero";
+        navigate("/panel/reportero");
         }, 1500);
 
     } catch (error) {

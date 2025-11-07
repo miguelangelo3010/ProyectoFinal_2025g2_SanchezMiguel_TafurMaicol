@@ -1,5 +1,6 @@
 // src/pages/PanelEditor/PanelEditor.jsx
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, query, where, getDocs, updateDoc, doc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../../Firebase/ConfigFirebase";
@@ -12,6 +13,7 @@ const PanelEditor = () => {
     const [noticias, setNoticias] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [mensaje, setMensaje] = useState("");
+    const navigate = useNavigate();
 
     useEffect(() => {
         // 🧩 Detectar usuario logueado
@@ -20,7 +22,7 @@ const PanelEditor = () => {
                 setUsuario(user);
                 await obtenerNoticias();
             } else {
-                window.location.href = "/login";
+                navigate("/login");
             }
             setCargando(false);
         });

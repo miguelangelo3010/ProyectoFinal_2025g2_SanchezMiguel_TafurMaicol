@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
+import { useNavigate } from "react-router-dom";
 import { collection, query, where, getDocs, doc, updateDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../../../Firebase/ConfigFirebase";
 import Noticia from "../../../Components/Noticia/Noticia.jsx";
@@ -11,6 +12,7 @@ const NoticiasPublicadasEditor = () => {
   const [noticias, setNoticias] = useState([]);
   const [cargando, setCargando] = useState(true);
   const [mensaje, setMensaje] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
@@ -18,7 +20,7 @@ const NoticiasPublicadasEditor = () => {
         setUsuario(user);
         await obtenerNoticias(user.uid);
       } else {
-        window.location.href = "/login";
+        navigate("/login");
       }
       setCargando(false);
     });

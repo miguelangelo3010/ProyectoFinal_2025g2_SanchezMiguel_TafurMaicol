@@ -1,10 +1,12 @@
 // src/pages/RegistroPage.jsx
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { auth, db, storage } from "../../Firebase/ConfigFirebase";
 import "./RegistroPage.css";
+import { Navigate } from "react-router-dom";
 
 const RegistroPage = () => {
   const [nombre, setNombre] = useState("");
@@ -13,6 +15,7 @@ const RegistroPage = () => {
   const [rol, setRol] = useState("reportero");
   const [foto, setFoto] = useState(null);
   const [mensaje, setMensaje] = useState("");
+  const navigate = Navigate();
 
   const handleRegistro = async (e) => {
     e.preventDefault();
@@ -50,6 +53,9 @@ const RegistroPage = () => {
       setEmail("");
       setPassword("");
       setFoto(null);
+      setTimeout(() => {
+        navigate("/login");
+      }, 1500);
     } catch (error) {
       console.error("❌ Error al registrar usuario:", error);
       setMensaje("Error: " + error.message);

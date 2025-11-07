@@ -1,5 +1,6 @@
 // src/pages/PanelReportero.jsx
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, query, where, getDocs } from "firebase/firestore";
 import { auth, db } from "../../Firebase/ConfigFirebase";
@@ -12,6 +13,7 @@ const PanelReportero = () => {
   const [usuario, setUsuario] = useState(null);
   const [noticias, setNoticias] = useState([]);
   const [cargando, setCargando] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 🧩 Detectar usuario activo
@@ -30,7 +32,7 @@ const PanelReportero = () => {
         setNoticias(lista);
       } else {
         // Si no hay sesión, redirige al login
-        window.location.href = "/login";
+        navigate("/login");
       }
       setCargando(false);
     });
