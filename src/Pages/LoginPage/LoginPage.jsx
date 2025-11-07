@@ -1,4 +1,5 @@
 // src/pages/LoginPage.jsx
+import { useNavigate } from "react-router-dom";
 import React, { useState } from "react";
 import "./LoginPage.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -9,6 +10,8 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
+    const navigate = useNavigate();
+
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -32,9 +35,9 @@ const LoginPage = () => {
 
         // 🔹 3. Redirigir según rol
         if (rol === "reportero") {
-          window.location.href = "/panel/reportero";
+          navigate("/panel/reportero");
         } else if (rol === "editor") {
-          window.location.href = "/panel/editor";
+              navigate("/panel/editor");
         } else {
           alert("Tu rol no está definido. Contacta al administrador.");
           await auth.signOut();
