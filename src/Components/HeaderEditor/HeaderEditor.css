@@ -76,22 +76,25 @@
 }
 
 /* Menú lateral */
+/* Menú lateral */
 .menu-lateral {
   position: fixed;
   top: 0;
-  left: -240px;
+  left: 0;
   width: 240px;
   height: 100vh;
-  background-color: #001c4b;
+  background-color: #002b75;
   color: white;
   padding: 20px;
-  transition: left 0.3s ease;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%); /* Oculto por defecto */
   z-index: 1000;
 }
 
 .menu-lateral.abierto {
-  left: 0;
+  transform: translateX(0); /* Visible */
 }
+
 
 .menu-lateral ul {
   list-style: none;

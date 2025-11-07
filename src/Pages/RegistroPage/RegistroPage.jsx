@@ -15,7 +15,7 @@ const RegistroPage = () => {
   const [rol, setRol] = useState("reportero");
   const [foto, setFoto] = useState(null);
   const [mensaje, setMensaje] = useState("");
-  const navigate = Navigate();
+  const navigate = useNavigate();
 
   const handleRegistro = async (e) => {
     e.preventDefault();
