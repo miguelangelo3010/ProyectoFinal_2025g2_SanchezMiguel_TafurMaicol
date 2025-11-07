@@ -1,6 +1,6 @@
 // src/components/HeaderEditor/HeaderEditor.jsx
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Menu, User } from "lucide-react";
 import "./HeaderReportero.css";
 import { onAuthStateChanged, signOut } from "firebase/auth";
@@ -10,6 +10,7 @@ const HeaderReportero = () => {
   const [menuAbierto, setMenuAbierto] = useState(false);
   const [userMenuAbierto, setUserMenuAbierto] = useState(false);
   const [usuario, setUsuario] = useState(null);
+    const navigate = useNavigate();
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -23,7 +24,7 @@ const HeaderReportero = () => {
 
   const handleCerrarSesion = async () => {
     await signOut(auth);
-    window.location.href = "/";
+          navigate("/");
   };
 
   return (
