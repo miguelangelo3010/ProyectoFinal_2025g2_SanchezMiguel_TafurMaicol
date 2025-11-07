@@ -1,5 +1,4 @@
-// src/pages/LoginPage.jsx
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import React, { useState } from "react";
 import "./LoginPage.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -10,34 +9,26 @@ const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
-    const navigate = useNavigate();
-
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      // 🔹 1. Iniciar sesión con Firebase Auth
       const userCredential = await signInWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
-      console.log("✅ Sesión iniciada correctamente:", user);
-
-      // 🔹 2. Buscar el rol en Firestore
       const docRef = doc(db, "usuarios", user.uid);
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        const datosUsuario = docSnap.data();
-        const rol = datosUsuario.rol;
-
+        const { rol } = docSnap.data();
         alert(`Bienvenido ${user.email} — Rol: ${rol}`);
 
-        // 🔹 3. Redirigir según rol
         if (rol === "reportero") {
           navigate("/panel/reportero");
         } else if (rol === "editor") {
-              navigate("/panel/editor");
+          navigate("/panel/editor");
         } else {
           alert("Tu rol no está definido. Contacta al administrador.");
           await auth.signOut();
@@ -48,15 +39,13 @@ const LoginPage = () => {
     } catch (error) {
       console.error("❌ Error al iniciar sesión:", error.message);
 
-      if (error.code === "auth/invalid-email") {
-        alert("El correo electrónico no es válido.");
-      } else if (error.code === "auth/user-not-found") {
-        alert("No existe un usuario con ese correo.");
-      } else if (error.code === "auth/wrong-password") {
-        alert("Contraseña incorrecta.");
-      } else {
-        alert("Error al iniciar sesión. Intenta nuevamente.");
-      }
+      const errores = {
+        "auth/invalid-email": "El correo electrónico no es válido.",
+        "auth/user-not-found": "No existe un usuario con ese correo.",
+        "auth/wrong-password": "Contraseña incorrecta."
+      };
+
+      alert(errores[error.code] || "Error al iniciar sesión. Intenta nuevamente.");
     } finally {
       setLoading(false);
     }
@@ -103,7 +92,7 @@ const LoginPage = () => {
           </button>
 
           <p className="registro">
-            ¿No tienes una cuenta? <a href="/registro">Regístrate</a>
+            ¿No tienes una cuenta? <Link to="/registro">Regístrate</Link>
           </p>
         </form>
       </div>
