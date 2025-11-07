@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import HomePage from "./Pages/HomePage/HomePage.jsx";
 import NoticiasPage from "./Pages/NoticiasPage.jsx";
 import LoginPage from "./Pages/LoginPage/LoginPage.jsx";
@@ -13,7 +13,7 @@ import './App.css';
 
 function App() {
   return (
-    <Router>
+    <BrowserRouter basename="/ProyectoFinal_2025g2_SanchezMiguel_TafurMaicol">
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/*" element={<HomePage />} />
@@ -27,10 +27,9 @@ function App() {
         <Route path="/panel/editor/publicadas" element={<NoticiasPublicadasEditor />} />
         <Route path="/panel/editor/desactivadas" element={<NoticiasDesactivadasEditor />} />
       </Routes>
-    </Router>
+    </BrowserRouter>
   );
 }
 
 export default App;
-
 
