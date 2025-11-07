@@ -26,11 +26,11 @@ const LoginPage = () => {
         alert(`Bienvenido ${user.email} — Rol: ${rol}`);
 
         if (rol === "reportero") {
-          navigate(`${import.meta.env.BASE_URL}panel/reportero`);
+          navigate("/panel/reportero");
         } else if (rol === "editor") {
-          navigate(`${import.meta.env.BASE_URL}panel/editor`);
-
-        } else {
+          navigate("/panel/editor");
+        }
+        else {
           alert("Tu rol no está definido. Contacta al administrador.");
           await auth.signOut();
         }
