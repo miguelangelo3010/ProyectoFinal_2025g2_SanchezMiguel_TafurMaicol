@@ -1,0 +1,134 @@
+/* src/pages/LoginPage.css */
+
+.login-container {
+  display: flex;
+  height: 100vh;
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/6/64/Newspaper_background.jpg");
+  background-size: cover;
+  background-position: center;
+  font-family: 'Georgia', serif;
+}
+
+.login-left,
+.login-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Sección izquierda */
+.login-left {
+  color: #111;
+  text-align: center;
+  padding: 40px;
+  backdrop-filter: brightness(0.9);
+}
+
+.slogan-top {
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.slogan-main {
+  font-size: 3rem;
+  font-style: italic;
+  margin: 5px 0;
+}
+
+.slogan-sub {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.slogan-bottom {
+  margin-top: 20px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  max-width: 400px;
+}
+
+/* Sección derecha */
+.login-right {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 40px 50px;
+  border-radius: 12px;
+  margin-right: 80px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.titulo {
+  font-size: 1.8rem;
+  text-align: center;
+  color: #003b91;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+/* Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 300px;
+}
+
+.login-form label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.login-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.login-form input:focus {
+  border-color: #003b91;
+}
+
+.login-form button {
+  background-color: #0a53be;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s ease;
+}
+
+.login-form button:hover {
+  background-color: #083c89;
+}
+
+/* Enlace de registro */
+.registro {
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.registro a {
+  color: #003b91;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.registro a:hover {
+  text-decoration: underline;
+}
+
+/* Responsivo */
+@media (max-width: 768px) {
+  .login-container {
+    flex-direction: column;
+  }
+  .login-right {
+    margin: 20px;
+  }
+}

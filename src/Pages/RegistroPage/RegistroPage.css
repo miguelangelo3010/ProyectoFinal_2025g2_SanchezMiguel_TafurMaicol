@@ -1,0 +1,55 @@
+/* src/pages/RegistroPage.css */
+
+.registro-container {
+  max-width: 400px;
+  margin: 60px auto;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  text-align: center;
+}
+
+.registro-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.registro-form label {
+  font-weight: 600;
+  text-align: left;
+}
+
+.registro-form input,
+.registro-form select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+}
+
+.registro-form input:focus,
+.registro-form select:focus {
+  border-color: #004aad;
+}
+
+button {
+  background-color: #004aad;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #083c89;
+}
+
+.mensaje {
+  margin-top: 15px;
+  font-weight: 600;
+  color: #004aad;
+}

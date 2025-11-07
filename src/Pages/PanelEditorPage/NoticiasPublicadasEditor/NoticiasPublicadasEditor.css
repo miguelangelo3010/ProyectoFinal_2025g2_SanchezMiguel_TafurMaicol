@@ -1,0 +1,62 @@
+.panel-editor-container {
+  padding: 20px;
+  background-color: #f5f8ff;
+  min-height: 100vh;
+}
+
+.titulo-panel {
+  color: #004aad;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.saludo {
+  color: #333;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.noticias-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: flex-start;
+}
+
+.sin-noticias {
+  color: gray;
+  font-style: italic;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.noticia-card-wrapper {
+  position: relative;
+  background: white;
+  padding: 10px;
+  border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.btn-desactivar {
+  margin-top: 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-desactivar:hover {
+  background-color: #b52b27;
+}
+
+.mensaje {
+  text-align: center;
+  font-weight: 600;
+  color: #004aad;
+  margin-bottom: 15px;
+}

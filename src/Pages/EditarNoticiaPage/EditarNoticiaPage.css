@@ -1,0 +1,98 @@
+.editar-noticia-container {
+  max-width: 600px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px 35px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.editar-noticia-container h2 {
+  text-align: center;
+  color: #004aad;
+  margin-bottom: 20px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-weight: 600;
+  color: #333;
+}
+
+input,
+textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+button {
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+button:hover {
+  background-color: #083c89;
+}
+
+.mensaje {
+  margin-top: 10px;
+  text-align: center;
+  color: green;
+  font-weight: 600;
+}
+
+select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: white;
+  font-size: 1rem;
+  outline: none;
+}
+
+select:focus {
+  border-color: #004aad;
+  box-shadow: 0 0 4px rgba(0, 74, 173, 0.3);
+}
+
+.preview-imagen {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.preview-imagen img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+}
+
+/* botones */
+.acciones {
+  display: flex;
+  gap: 10px;
+  margin-top: 12px;
+}
+.btn-guardar {
+  background-color: #004aad;
+  color: white;
+  padding: 10px 14px;
+  border: none;
+  border-radius: 6px;
+}
+.btn-cancel {
+  background: transparent;
+  border: 1px solid #ccc;
+  padding: 10px 14px;
+  border-radius: 6px;
+}

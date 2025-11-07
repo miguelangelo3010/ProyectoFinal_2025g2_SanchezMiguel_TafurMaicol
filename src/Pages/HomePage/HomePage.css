@@ -1,0 +1,19 @@
+.Main {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 80vh;
+  width: 100%;
+  overflow: hidden; 
+}
+
+/* Sección de información */
+.nav-info {
+    background-color: rgb(0, 202, 202);
+  flex: 1; /* ocupa 1 parte del espacio */
+  padding: 20px;
+  background-color: aliceblue;
+  box-sizing: border-box;
+  overflow-y: auto;
+}

@@ -1,0 +1,88 @@
+.noticia-card {
+  width: 320px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  background: white;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.noticia-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.noticia-content {
+  padding: 10px;
+}
+
+.noticia-titulo {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.noticia-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.noticia-btn:hover {
+  background-color: #0056b3;
+}
+
+.noticia-botones {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.noticia-btn {
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.noticia-btn:hover {
+  background-color: #002f78;
+}
+
+.editar-btn {
+  background-color: #ff9800;
+}
+
+.editar-btn:hover {
+  background-color: #e68900;
+}
+
+.revision-btn {
+  background-color: #00796b;
+}
+
+.revision-btn:hover {
+  background-color: #00695c;
+}
+
+.revision-btn.disabled,
+.revision-btn:disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+}
+.noticia-btn:disabled,
+.noticia-btn.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

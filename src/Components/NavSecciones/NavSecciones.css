@@ -1,0 +1,27 @@
+.nav-secciones {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+  height: 5vh;
+}
+
+.nav-secciones ul {
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  padding: 10px;
+  margin: 0;
+  gap: 20px;
+}
+
+.nav-secciones a {
+  text-decoration: none;
+  color: #004aad;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.nav-secciones a:hover {
+  color: #002f6c;
+  text-decoration: underline;
+}
