@@ -9,11 +9,12 @@ import EditarNoticiaPage from "./Pages/EditarNoticiaPage/EditarNoticiaPage.jsx";
 import PanelEditorPage from "./Pages/PanelEditorPage/PanelEditorPage.jsx";
 import NoticiasPublicadasEditor from "./Pages/PanelEditorPage/NoticiasPublicadasEditor/NoticiasPublicadasEditor.jsx";
 import NoticiasDesactivadasEditor from "./Pages/PanelEditorPage/NoticiasDesactivadasEditor/NoticiasDesactivadasEditor.jsx";
-import './App.css';
 
 function App() {
+  const base = import.meta.env.BASE_URL;
+
   return (
-    <BrowserRouter basename="/ProyectoFinal_2025g2_SanchezMiguel_TafurMaicol">
+    <BrowserRouter basename={base}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/*" element={<HomePage />} />
@@ -32,4 +33,3 @@ function App() {
 }
 
 export default App;
-
