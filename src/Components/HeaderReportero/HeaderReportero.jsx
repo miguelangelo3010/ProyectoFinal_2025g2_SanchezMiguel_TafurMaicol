@@ -24,7 +24,7 @@ const HeaderReportero = () => {
 
   const handleCerrarSesion = async () => {
     await signOut(auth);
-          navigate("/");
+          navigate("/HomePage");
   };
 
   return (

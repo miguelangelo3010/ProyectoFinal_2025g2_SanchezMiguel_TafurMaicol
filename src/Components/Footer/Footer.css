@@ -1,0 +1,177 @@
+:root{
+  --bg-900:#040497;
+  --bg-950:#121222;
+  --fg-200:#e6e6e6;
+  --muted:#a1a1aa;
+  --line:#1b1b1f;
+  --accent:#e11d48; /* rojo DataNews */
+}
+
+.container{
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* Wrapper */
+.footer{
+  margin-top: 2.5rem;
+  color: var(--fg-200);
+  background: linear-gradient(to bottom, var(--bg-900), var(--bg-950));
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, sans-serif;
+}
+
+/* Grid superior */
+.footer__grid{
+  display: grid;
+  gap: 2rem;
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--line);
+}
+@media (min-width: 768px){
+  .footer__grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Marca */
+.footer__brand{
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.footer__logo{
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+.footer__badge{
+  background: var(--accent);
+  color: #fff;
+  font-size: .65rem;
+  padding: 2px 6px;
+  border-radius: 6px;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.footer__tagline{
+  margin-top: .5rem;
+  font-size: .9rem;
+  color: var(--muted);
+  max-width: 34ch;
+  line-height: 1.5;
+}
+
+/* Navegación */
+.footer__nav{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem 2rem;
+}
+.footer__list{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.footer__title{
+  font-size: .95rem;
+  font-weight: 600;
+}
+.footer__link{
+  color: #c9c9cf;
+  text-decoration: none;
+  transition: color .2s ease;
+}
+.footer__link:hover{
+  color: #fff;
+}
+
+/* Contacto */
+
+.footer__contact {
+  list-style: none;
+  margin: 0.75rem 0 0;
+  padding: 0;
+  color: #c9c9cf;
+  font-size: 0.9rem;
+}
+
+.footer__contact li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.4rem;
+}
+
+.footer__icon {
+  color: var(--accent);
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+/* Redes sociales*/
+
+.footer__socials {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.chip {
+  display: inline-grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: 1px solid #24242a;
+  background: #0f0f13;
+  transition: all 0.2s ease;
+}
+
+.chip:hover {
+  border-color: #2d2d35;
+  background: #15151b;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  fill: #b1b1ba;
+  transition: all 0.25s ease;
+}
+
+/* 🎨 Efecto hover: animación y color principal */
+.chip:hover .icon {
+  fill: var(--accent);
+  transform: scale(1.15);
+}
+
+/* Línea inferior */
+.footer__bottom{
+  border-top: 1px solid var(--line);
+  padding: 1rem 0 .75rem;
+  background: #0a0a0d;
+}
+.footer__legal{
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  color: #9a9aa3;
+  font-size: .8rem;
+}
+@media (min-width: 640px){
+  .footer__legal{
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.footer__credit{
+  margin-top: .5rem;
+  text-align: center;
+  font-size: .72rem;
+  color: #8d8d95;
+}
+.footer__credit span{
+  color: var(--accent);
+  font-weight: 700;
+}

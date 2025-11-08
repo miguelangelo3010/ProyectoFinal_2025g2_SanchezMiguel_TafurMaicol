@@ -9,6 +9,11 @@ import EditarNoticiaPage from "./Pages/EditarNoticiaPage/EditarNoticiaPage.jsx";
 import PanelEditorPage from "./Pages/PanelEditorPage/PanelEditorPage.jsx";
 import NoticiasPublicadasEditor from "./Pages/PanelEditorPage/NoticiasPublicadasEditor/NoticiasPublicadasEditor.jsx";
 import NoticiasDesactivadasEditor from "./Pages/PanelEditorPage/NoticiasDesactivadasEditor/NoticiasDesactivadasEditor.jsx";
+import PanelSecciones from "./Pages/PanelEditorPage/PanelSecciones/PanelSecciones.jsx";
+import CrearSeccion from "./Pages/PanelEditorPage/CrearSeccion/CrearSeccion.jsx";
+import EditarSeccion from "./Pages/PanelEditorPage/EditarSeccion/EditarSeccion.jsx";
+import NoticiasPorSeccion from "./Pages/NoticiasPorSeccion/NoticiasPorSeccion.jsx";
+import NoticiaDetalle from "./Pages/NoticiaDetalle/NoticiaDetalle.jsx";
 
 function App() {
   const base = import.meta.env.BASE_URL;
@@ -27,6 +32,15 @@ function App() {
         <Route path="/panel/editor" element={<PanelEditorPage />} />
         <Route path="/panel/editor/publicadas" element={<NoticiasPublicadasEditor />} />
         <Route path="/panel/editor/desactivadas" element={<NoticiasDesactivadasEditor />} />
+        <Route path="/panel/editor/secciones" element={<PanelSecciones />} />
+        <Route path="/panel/editor/secciones/nueva" element={<CrearSeccion />} />
+        <Route path="/panel/editor/secciones/editar/:id" element={<EditarSeccion />} />
+        <Route path="/seccion/:nombreSeccion" element={<NoticiasPorSeccion />} />
+        <Route path="/noticia/:id" element={<NoticiaDetalle />} />
+
+
+
+
       </Routes>
     </BrowserRouter>
   );

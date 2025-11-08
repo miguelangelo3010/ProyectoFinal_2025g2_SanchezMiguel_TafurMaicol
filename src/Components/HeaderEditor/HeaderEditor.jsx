@@ -73,6 +73,12 @@ const HeaderEditor = () => {
               🚫 Noticias Desactivadas
             </Link>
           </li>
+                    <li>
+            <Link to="/panel/editor/secciones" onClick={toggleMenu}>
+               Secciones
+            </Link>
+          </li>
+
         </ul>
       </nav>
 

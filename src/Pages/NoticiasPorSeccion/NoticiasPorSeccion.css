@@ -1,0 +1,20 @@
+.noticias-seccion {
+  padding: 20px;
+}
+
+.noticias-seccion h2 {
+  margin-bottom: 20px;
+  color: #004aad;
+}
+
+.noticias-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.sin-noticias {
+  text-align: center;
+  color: gray;
+  font-style: italic;
+}

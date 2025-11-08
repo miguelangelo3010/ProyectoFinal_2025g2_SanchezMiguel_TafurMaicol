@@ -1,0 +1,106 @@
+/* src/pages/PanelEditor/PanelSecciones.css */
+
+.panel-editor-container {
+  padding: 20px;
+  background-color: #f4f8ff;
+  min-height: 100vh;
+}
+
+.titulo-panel {
+  text-align: center;
+  margin-bottom: 10px;
+  color: #004aad;
+}
+
+.descripcion {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.tabla-secciones {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.tabla-secciones th,
+.tabla-secciones td {
+  padding: 12px 16px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.tabla-secciones th {
+  background-color: #004aad;
+  color: white;
+  font-weight: 600;
+}
+
+.tabla-secciones tr:hover {
+  background-color: #f2f7ff;
+}
+
+.estado.activo {
+  color: green;
+  font-weight: 600;
+}
+
+.estado.inactivo {
+  color: red;
+  font-weight: 600;
+}
+
+/* Botones */
+.btn-editar,
+.btn-eliminar {
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-right: 5px;
+  font-size: 0.9rem;
+}
+
+.btn-editar {
+  background-color: #ffc107;
+  color: #000;
+}
+
+.btn-editar:hover {
+  background-color: #e0a800;
+}
+
+.btn-eliminar {
+  background-color: #dc3545;
+  color: white;
+}
+
+.btn-eliminar:hover {
+  background-color: #bb2d3b;
+}
+
+.btn-crear {
+  background-color: #004aad;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.btn-crear:hover {
+  background-color: #003080;
+}
+
+.mensaje {
+  text-align: center;
+  color: #004aad;
+  font-weight: bold;
+  margin-bottom: 15px;
+}

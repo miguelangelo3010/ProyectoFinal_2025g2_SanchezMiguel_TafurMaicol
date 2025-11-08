@@ -24,7 +24,8 @@
 .noticias-grid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: start;
+  justify-content: center;
+  text-align: justify;
   gap: 16px;
 }
 @media (max-width: 768px) {

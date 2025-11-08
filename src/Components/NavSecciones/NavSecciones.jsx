@@ -1,16 +1,34 @@
 // src/components/NavSecciones/NavSecciones.jsx
-import React from 'react';
-import './NavSecciones.css';
+import React, { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../../Firebase/ConfigFirebase";
+import "./NavSecciones.css";
+import { Link } from "react-router-dom";
 
 const NavSecciones = () => {
-  const secciones = ["Tecnología", "Arte", "Música", "Juegos", "Mundo", "Deportes"];
+  const [secciones, setSecciones] = useState([]);
+
+  useEffect(() => {
+    const obtenerSecciones = async () => {
+      try {
+        const querySnapshot = await getDocs(collection(db, "secciones"));
+        const lista = querySnapshot.docs
+          .map((doc) => ({ id: doc.id, ...doc.data() }))
+          .filter((sec) => sec.estado === "activo");
+        setSecciones(lista);
+      } catch (error) {
+        console.error("Error al cargar secciones:", error);
+      }
+    };
+    obtenerSecciones();
+  }, []);
 
   return (
     <nav className="nav-secciones">
       <ul>
-        {secciones.map((nombre, index) => (
-          <li key={index}>
-            <a href={`/seccion/${nombre.toLowerCase()}`}>{nombre}</a>
+        {secciones.map((sec) => (
+          <li key={sec.id}>
+            <Link to={`/seccion/${sec.nombre.toLowerCase()}`}>{sec.nombre}</Link>
           </li>
         ))}
       </ul>

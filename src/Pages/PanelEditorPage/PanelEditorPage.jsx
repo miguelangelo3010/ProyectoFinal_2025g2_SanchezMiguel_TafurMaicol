@@ -53,11 +53,14 @@ const handlePublicar = async (id) => {
     if (!usuario) return alert("No hay editor autenticado.");
 
     const docRef = doc(db, "noticias", id);
-    await updateDoc(docRef, {
-      estado: "Publicado",
-      aprobadoPor: usuario.uid, // 🔹 nuevo campo
-      fechaActualizacion: serverTimestamp(),
-    });
+await updateDoc(docRef, {
+  estado: "Publicado",
+  fechaActualizacion: serverTimestamp(),
+  aprobadoPor: usuario.uid,
+  editorNombre: usuario.displayName || usuario.email,
+});
+
+
 
     setNoticias((prev) =>
       prev.map((n) => (n.id === id ? { ...n, estado: "Publicado", aprobadoPor: usuario.uid } : n))
