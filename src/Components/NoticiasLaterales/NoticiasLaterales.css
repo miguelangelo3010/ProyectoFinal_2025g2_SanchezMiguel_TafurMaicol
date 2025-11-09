@@ -113,6 +113,10 @@
 
 /* Responsivo */
 @media (max-width: 768px){
+  .noticias-laterales{
+    display: none;
+  }
+
   .noticias-laterales{ border-left: none; border-top: 2px solid var(--nl-line); }
   .nl__item{ grid-template-columns: 58px 1fr; }
   .nl__headline{ font-size: .76rem; }
