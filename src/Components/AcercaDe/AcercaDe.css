@@ -1,0 +1,104 @@
+/* ===== SECCIÓN ACERCA DE ===== */
+.acerca-container {
+  background: linear-gradient(180deg, #f4f8ff 0%, #ffffff 100%);
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: "Poppins", sans-serif;
+}
+
+.acerca-titulo {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #004aad;
+  margin-bottom: 40px;
+}
+
+/* --- BLOQUES --- */
+.acerca-bloque {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 60px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.acerca-bloque.invertido {
+  flex-direction: row-reverse;
+}
+
+/* --- IMAGEN --- */
+.acerca-img {
+  flex: 1;
+  max-width: 500px;
+  border-radius: 15px;
+  object-fit: cover;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.1);
+}
+
+/* --- TEXTO --- */
+.acerca-texto {
+  flex: 1;
+  min-width: 300px;
+}
+
+.acerca-texto h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #004aad;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.acerca-texto p {
+  color: #333;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* --- MISIÓN Y VISIÓN --- */
+.acerca-mision {
+  background-color: #004aad;
+  color: white;
+  padding: 40px 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+}
+
+.acerca-mision h3 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.acerca-mision p {
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* --- RESPONSIVE --- */
+@media (max-width: 768px) {
+  .acerca-bloque {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .acerca-bloque.invertido {
+    flex-direction: column;
+  }
+
+  .acerca-img {
+    width: 100%;
+    max-width: 100%;
+  }
+}

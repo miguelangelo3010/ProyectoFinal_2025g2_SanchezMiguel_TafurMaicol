@@ -5,6 +5,7 @@ import { db } from "../../Firebase/ConfigFirebase";
 import Noticia from "../../Components/Noticia/Noticia.jsx";
 import Header from "../../Components/Header/Header.jsx";
 import NavSecciones from "../../Components/NavSecciones/NavSecciones.jsx";
+import NoticiaDestacada from "../../Components/NoticiaDestacada/NoticiaDestacada.jsx";
 import "./NoticiasPorSeccion.css";
 
 const NoticiasPorSeccion = () => {
@@ -17,9 +18,8 @@ const NoticiasPorSeccion = () => {
       try {
         const noticiasRef = collection(db, "noticias");
         const seccionNormalizada =
-  nombreSeccion.charAt(0).toUpperCase() + nombreSeccion.slice(1).toLowerCase();
+          nombreSeccion.charAt(0).toUpperCase() + nombreSeccion.slice(1).toLowerCase();
 
-        // 🔍 Buscar noticias que estén publicadas y que coincidan con el slug de la sección
         const q = query(
           noticiasRef,
           where("categoria", "==", seccionNormalizada),
@@ -52,20 +52,27 @@ const NoticiasPorSeccion = () => {
 
       <main className="noticias-seccion">
         <h2>
-          🗞️ Noticias de{" "}
+          Noticias de{" "}
           {nombreSeccion.charAt(0).toUpperCase() + nombreSeccion.slice(1)}
         </h2>
+
 
         {noticias.length === 0 ? (
           <p className="sin-noticias">
             No hay noticias publicadas en esta sección.
           </p>
         ) : (
-          <div className="noticias-grid">
-            {noticias.map((noticia) => (
-              <Noticia key={noticia.id} noticia={noticia} />
-            ))}
-          </div>
+          <>
+            {noticias.length > 0 && (
+              <NoticiaDestacada noticia={noticias[0]} />
+            )}
+
+            <div className="noticias-grid">
+              {noticias.slice(1).map((noticia) => (
+                <Noticia key={noticia.id} noticia={noticia} />
+              ))}
+            </div>
+          </>
         )}
       </main>
     </div>

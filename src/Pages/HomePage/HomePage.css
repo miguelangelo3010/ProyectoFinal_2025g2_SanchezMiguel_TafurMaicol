@@ -1,9 +1,72 @@
+/* ====== Sticky Header ====== */
+header.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+/* ====== Sticky Nav ====== */
+.nav-secciones {
+  position: sticky;
+  top: 100px; 
+  z-index: 900;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  transition: all 0.3s ease-in-out;
+}
+
+/* ====== Carousel ====== */
+.carousel-noticias-container {
+  width: 100%;
+  margin-bottom: 0;
+}
+
+/* ====== Contenido principal ====== */
 .Main {
   display: flex;
   flex-direction: row;
-  align-items: stretch;
   justify-content: space-between;
-  height: 80vh;
+  align-items: flex-start;
+  padding: 20px;
   width: 100%;
-  overflow: hidden;
+  gap: 20px;
+  box-sizing: border-box;
+}
+
+/* Noticias principales */
+.Main > .noticias-container {
+  flex: 3;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #f9f9f9;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* Noticias laterales  */
+.Main > .noticias-laterales {
+  flex: 1;
+  max-height: 80vh;
+  overflow-y: auto;
+  background-color: #f3f7ff;
+  padding: 15px;
+  border-radius: 10px;
+  border-left: 2px solid #ddd;
+}
+
+/* Scroll */
+.Main > div::-webkit-scrollbar {
+  width: 8px;
+}
+.Main > div::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+.Main > div::-webkit-scrollbar-thumb:hover {
+  background-color: #999;
+}
+
+/* Footer */
+footer.footer {
+  margin-top: 60px;
 }

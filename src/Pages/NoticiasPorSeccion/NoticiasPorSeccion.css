@@ -4,6 +4,7 @@
 
 .noticias-seccion h2 {
   margin-bottom: 20px;
+  text-align: center;
   color: #004aad;
 }
 
@@ -11,6 +12,7 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
+  background-color: #ffffff;
 }
 
 .sin-noticias {

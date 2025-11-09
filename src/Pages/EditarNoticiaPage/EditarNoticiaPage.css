@@ -1,15 +1,25 @@
 .editar-noticia-container {
-  max-width: 600px;
-  margin: 40px auto;
-  background: #fff;
-  padding: 25px 35px;
-  border-radius: 10px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  min-height: 100vh;
+  padding: 60px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  /* Imagen de fondo */
+  background-image: url("https://png.pngtree.com/thumb_back/fw800/background/20230625/pngtree-innovative-3d-news-template-microphone-products-and-journalism-concept-rendered-image_3669988.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  /* Superposición  */
+  overflow: hidden;
 }
 
 .editar-noticia-container h2 {
   text-align: center;
-  color: #004aad;
+  color: #ffffff;
   margin-bottom: 20px;
 }
 
@@ -91,7 +101,7 @@ select:focus {
   border-radius: 6px;
 }
 .btn-cancel {
-  background: transparent;
+    background-color: #004aad;
   border: 1px solid #ccc;
   padding: 10px 14px;
   border-radius: 6px;

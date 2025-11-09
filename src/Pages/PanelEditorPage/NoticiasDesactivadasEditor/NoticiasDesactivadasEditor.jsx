@@ -28,7 +28,7 @@ const NoticiasDesactivadasEditor = () => {
     return () => unsubscribe();
   }, []);
 
-  // 🔍 Obtener noticias desactivadas por el editor autenticado
+  //  Obtener noticias desactivadas por el editor autenticado
   const obtenerNoticias = async (editorId) => {
     try {
       const noticiasRef = collection(db, "noticias");
@@ -49,7 +49,7 @@ const NoticiasDesactivadasEditor = () => {
     }
   };
 
-  // ♻️ Reactivar noticia (opcional)
+  //  Reactivar noticia 
   const handleReactivar = async (id) => {
     try {
       const docRef = doc(db, "noticias", id);
@@ -59,22 +59,24 @@ const NoticiasDesactivadasEditor = () => {
       });
 
       setNoticias((prev) => prev.filter((n) => n.id !== id));
-      setMensaje("✅ Noticia reactivada correctamente.");
+      setMensaje("Noticia reactivada correctamente.");
       setTimeout(() => setMensaje(""), 2000);
     } catch (error) {
       console.error("Error al reactivar noticia:", error);
-      setMensaje("❌ Error al reactivar la noticia.");
+      setMensaje("Error al reactivar la noticia.");
     }
   };
 
   if (cargando) return <p className="loading">Cargando noticias desactivadas...</p>;
 
   return (
+    <>
+    <HeaderEditor />
     <div className="panel-editor-container">
-      <HeaderEditor />
+      
 
       <header className="panel-header">
-        <h1 className="titulo-panel">🚫 Noticias Desactivadas</h1>
+        <h1 className="titulo-panel">Noticias Desactivadas</h1>
         {usuario && (
           <h2 className="saludo">
             Desactivadas por <span>{usuario.displayName || usuario.email}</span>
@@ -95,13 +97,14 @@ const NoticiasDesactivadasEditor = () => {
                 onClick={() => handleReactivar(noticia.id)}
                 className="btn-reactivar"
               >
-                🔁 Reactivar
+                Reactivar
               </button>
             </div>
           ))}
         </div>
       )}
     </div>
+    </>
   );
 };
 

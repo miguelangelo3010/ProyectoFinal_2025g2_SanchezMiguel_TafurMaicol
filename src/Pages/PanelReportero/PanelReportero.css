@@ -1,53 +1,146 @@
-/* src/pages/PanelReportero.css */
-
+/* ===== PANEL GENERAL ===== */
 .panel-container {
-  background-color: #f8f9fa;
-  min-height: 100vh;
-}
-
-.panel-header {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 30px;
-  margin-top: 30px;
+  min-height: 100vh;
+  background-color: #f4f6fa;
+  font-family: "Poppins", sans-serif;
+}
+
+/* ===== HEADER DEL PANEL ===== */
+.panel-header {
+  color: rgb(39, 39, 150);
+  padding: 25px 40px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  background-color: white;
 }
 
 .panel-header h2 {
-  color: #004aad;
-  margin-bottom: 5px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .btn-crear {
-  background-color: #004aad;
+  display: inline-block;
+  background-color: #00b4d8;
   color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
   text-decoration: none;
-  padding: 8px 14px;
-  border-radius: 6px;
   font-weight: 600;
-  margin-top: 10px;
-  transition: background 0.3s;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .btn-crear:hover {
-  background-color: #00368b;
+  background-color: #0077b6;
+  transform: translateY(-2px);
 }
 
+/* ===== CONTROLES DE FILTRO Y BUSCADOR ===== */
+.MuiBox-root {
+  background-color: white;
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin: 25px auto;
+  width: 90%;
+  max-width: 1100px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+
+.MuiFormControl-root,
+.MuiTextField-root {
+  background-color: white;
+}
+
+/* ===== GRID DE NOTICIAS ===== */
 .noticias-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 25px;
+  padding: 20px 40px;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto 60px;
 }
 
+/* ===== TARJETAS DE NOTICIAS ===== */
+.noticia-card {
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.noticia-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.noticia-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.noticia-content {
+  padding: 15px 20px;
+}
+
+.noticia-titulo {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #004aad;
+}
+
+.noticia-subtitulo {
+  color: #555;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.noticia-estado {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.noticia-btn {
+  background-color: #004aad;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 12px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-right: 8px;
+}
+
+.noticia-btn:hover {
+  background-color: #00307a;
+}
+
+/* ===== SIN NOTICIAS ===== */
 .sin-noticias {
   text-align: center;
-  color: #777;
-  margin-top: 50px;
-  font-style: italic;
+  color: #444;
+  font-weight: 500;
+  padding: 50px 0;
+  font-size: 1.1rem;
 }
 
+/* ===== SPINNER O CARGA ===== */
 .loading {
   text-align: center;
-  margin-top: 50px;
+  margin-top: 100px;
+  color: #004aad;
+  font-weight: 600;
+  font-size: 1.2rem;
 }

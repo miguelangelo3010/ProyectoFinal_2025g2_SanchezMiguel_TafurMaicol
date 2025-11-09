@@ -1,4 +1,3 @@
-// src/pages/PanelEditor/CrearSeccion.jsx
 import React, { useState } from "react";
 import { collection, addDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../../../Firebase/ConfigFirebase.js";
@@ -13,7 +12,6 @@ const CrearSeccion = () => {
   const [mensaje, setMensaje] = useState("");
   const navigate = useNavigate();
 
-  // Función para generar el slug automáticamente
   const generarSlug = (texto) => {
     return texto
       .toLowerCase()
@@ -31,7 +29,7 @@ const CrearSeccion = () => {
     e.preventDefault();
 
     if (!nombre.trim() || !descripcion.trim()) {
-      setMensaje("⚠️ Todos los campos son obligatorios.");
+      setMensaje(" Todos los campos son obligatorios.");
       return;
     }
 
@@ -44,11 +42,11 @@ const CrearSeccion = () => {
         fechaCreacion: serverTimestamp(),
       });
 
-      setMensaje("✅ Sección creada correctamente.");
+      setMensaje("Sección creada correctamente.");
       setTimeout(() => navigate("/panel/editor/secciones"), 1500);
     } catch (error) {
       console.error("Error al crear sección:", error);
-      setMensaje("❌ Error al guardar la sección.");
+      setMensaje("Error al guardar la sección.");
     }
   };
 
@@ -57,7 +55,7 @@ const CrearSeccion = () => {
       <HeaderEditor />
 
       <header className="panel-header">
-        <h1 className="titulo-panel">➕ Crear Nueva Sección</h1>
+        <h1 className="titulo-panel">Crear Nueva Sección</h1>
         <p className="descripcion">
           Completa los campos para registrar una nueva sección en el portal de noticias.
         </p>
@@ -88,7 +86,7 @@ const CrearSeccion = () => {
         </select>
 
         <button type="submit" className="btn-guardar">
-          💾 Guardar Sección
+          Guardar Sección
         </button>
 
         {mensaje && <p className="mensaje">{mensaje}</p>}

@@ -23,7 +23,6 @@ const LoginPage = () => {
 
       if (docSnap.exists()) {
         const { rol } = docSnap.data();
-        alert(`Bienvenido ${user.email} — Rol: ${rol}`);
 
         if (rol === "reportero") {
           navigate("/panel/reportero");
@@ -38,7 +37,7 @@ const LoginPage = () => {
         alert("No se encontró información del usuario en la base de datos.");
       }
     } catch (error) {
-      console.error("❌ Error al iniciar sesión:", error.message);
+      console.error("Error al iniciar sesión:", error.message);
 
       const errores = {
         "auth/invalid-email": "El correo electrónico no es válido.",
@@ -55,8 +54,8 @@ const LoginPage = () => {
   return (
     <div className="login-container">
       <div className="login-left">
-        <h3 className="slogan-top">TU TRABAJO MANTIENE INFORMADA</h3>
-        <h1 className="slogan-main">Informada</h1>
+        <h3 className="slogan-top">TU TRABAJO MANTIENE</h3>
+        <h1 className="slogan-main">INFORMADA</h1>
         <h2 className="slogan-sub">A TODA UNA</h2>
         <h1 className="slogan-main">Comunidad</h1>
         <p className="slogan-bottom">

@@ -1,0 +1,105 @@
+.devueltas-container {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.devueltas-container h2 {
+  text-align: center;
+  color: #002b75;
+  margin-bottom: 15px;
+}
+
+.descripcion {
+  text-align: center;
+  color: #555;
+  margin-bottom: 25px;
+}
+
+.devueltas-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.devuelta-card {
+  background: #f9fafc;
+  border: 1px solid #e2e6ea;
+  border-radius: 10px;
+  padding: 15px 20px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
+}
+
+.devuelta-card h3 {
+  color: #002b75;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}
+
+.mensaje-devolucion {
+  background: #eef3ff;
+  border-left: 4px solid #002b75;
+  padding: 10px 15px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.mensaje-texto {
+  color: #333;
+  font-style: italic;
+  margin: 0 0 5px 0;
+}
+
+.mensaje-editor {
+  color: #555;
+  font-size: 0.9rem;
+  text-align: right;
+  margin: 0;
+}
+
+.sin-mensaje {
+  color: #777;
+  font-style: italic;
+}
+
+.acciones {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-editar {
+  background-color: #00796b;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s ease;
+}
+
+.btn-editar:hover {
+  background-color: #00695c;
+}
+
+.sin-noticias {
+  text-align: center;
+  color: #777;
+  font-style: italic;
+}
+
+.loading {
+  text-align: center;
+  color: #555;
+  padding: 50px;
+}
+
+.btn-editar.disabled {
+  background-color: #ccc;
+  color: #666;
+  cursor: not-allowed;
+  text-decoration: none;
+  pointer-events: none; 
+}

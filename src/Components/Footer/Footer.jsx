@@ -1,16 +1,17 @@
-import { FaFacebookF, FaInstagram, FaXTwitter, FaYoutube } from "react-icons/fa6";
+import { FaFacebookF, FaInstagram, FaTiktok, FaWhatsapp } from "react-icons/fa6";
 import { FaEnvelope, FaPhoneAlt, FaMapMarkerAlt, FaClock } from "react-icons/fa";
 import "./Footer.css";
+import { Link, useLocation } from "react-router-dom";
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" id="footer">
       <div className="footer__grid container">
         {/* Identidad */}
         <div>
           <div className="footer__brand">
-            <span className="footer__logo">DataNews</span>
-            <span className="footer__badge">beta</span>
+            <span className="footer__logo">Noticias</span>
+            <span className="footer__badge">El Ahora</span>
           </div>
           <p className="footer__tagline">
             Información clara, precisa y actual.
@@ -21,8 +22,8 @@ export default function Footer() {
         <nav aria-label="Secciones del sitio" className="footer__nav">
           <ul className="footer__list">
             <li><a className="footer__link" href="/">Inicio</a></li>
-            <li><a className="footer__link" href="/tecnologia">Tecnología</a></li>
-            <li><a className="footer__link" href="/educacion">Educación</a></li>
+            <li><Link to="/seccion/tecnología"  className="footer__link"> Tecnología </Link></li>
+            <li><Link to="/seccion/educación"  className="footer__link"> Educación </Link></li>
             <li><a className="footer__link" href="/opinion">Opinión</a></li>
           </ul>
           <ul className="footer__list">
@@ -39,14 +40,14 @@ export default function Footer() {
           <ul className="footer__contact">
             <li>
               <FaEnvelope className="footer__icon" />
-              <a className="footer__link" href="mailto:contacto@datnews.com">
-                contacto@datnews.com
+              <a className="footer__link" href="#">
+                contacto@noticiaselahora.com
               </a>
             </li>
             <li>
               <FaPhoneAlt className="footer__icon" />
-              <a className="footer__link" href="tel:+573105551234">
-                +57 310 555 1234
+              <a className="footer__link" href="#">
+                +57 3026787135
               </a>
             </li>
             <li>
@@ -66,20 +67,44 @@ export default function Footer() {
 
           {/* Redes */}
           <div className="footer__socials">
-            <a href="#" aria-label="Facebook" className="chip" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.facebook.com/share/17hEjVYfss/?mibextid=wwXIfr"
+              aria-label="Facebook"
+              className="chip"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaFacebookF className="icon" />
             </a>
 
-            <a href="#" aria-label="Instagram" className="chip" target="_blank" rel="noreferrer">
+            <a
+              href="https://www.instagram.com/stiventafur_15?igsh=MWdkb3cydng0bXJ4aA=="
+              aria-label="Instagram"
+              className="chip"
+              target="_blank"
+              rel="noreferrer"
+            >
               <FaInstagram className="icon" />
             </a>
 
-            <a href="#" aria-label="Twitter / X" className="chip" target="_blank" rel="noreferrer">
-              <FaXTwitter className="icon" />
+            <a
+              href="https://www.tiktok.com/@stiventafur15?_r=1&_t=ZS-91EtygGiDCP"
+              aria-label="TikTok"
+              className="chip"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaTiktok className="icon" />
             </a>
 
-            <a href="#" aria-label="YouTube" className="chip" target="_blank" rel="noreferrer">
-              <FaYoutube className="icon" />
+            <a
+              href="https://wa.me/573232034392"
+              aria-label="WhatsApp"
+              className="chip"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <FaWhatsapp className="icon" />
             </a>
           </div>
         </div>
@@ -87,7 +112,7 @@ export default function Footer() {
 
       <div className="footer__bottom">
         <div className="container footer__legal">
-          <p>© {new Date().getFullYear()} DataNews. Todos los derechos reservados.</p>
+          <p>© {new Date().getFullYear()} Noticias El Ahora. Todos los derechos reservados.</p>
           <p>Desarrollado por el equipo académico de la Universidad de la Amazonia.</p>
         </div>
         <p className="footer__credit">
@@ -97,3 +122,4 @@ export default function Footer() {
     </footer>
   );
 }
+

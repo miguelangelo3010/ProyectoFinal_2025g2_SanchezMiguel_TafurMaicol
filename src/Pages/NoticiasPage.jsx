@@ -1,4 +1,3 @@
-// src/pages/NoticiasPage.jsx
 import React, { useEffect, useState } from 'react';
 import { collection, getDocs, query, where } from 'firebase/firestore';
 import { db } from '../Firebase/ConfigFirebase';
@@ -12,7 +11,7 @@ const NoticiasPage = () => {
   useEffect(() => {
     const obtenerNoticiasPublicadas = async () => {
       try {
-        // 🔍 Solo obtener noticias con estado "Publicado"
+        // noticias con estado "Publicado"
         const noticiasRef = collection(db, 'noticias');
         const q = query(noticiasRef, where('estado', '==', 'Publicado'));
         const querySnapshot = await getDocs(q);
@@ -36,8 +35,15 @@ const NoticiasPage = () => {
   if (cargando) return <p>Cargando noticias...</p>;
 
   return (
-    <div className="noticias-container">
-      <h2>📰 Noticias Recientes</h2>
+    <div className="noticias-container" id="noticias">
+      <section className="intro-noticias">
+        <h2>Mantente Informado</h2>
+        <p>
+          Bienvenido a nuestra sección de noticias, un espacio donde podrás explorar artículos de 
+          tecnología, deportes, cultura, política y mucho más. ¡Descubre lo que está marcando la actualidad!
+        </p>
+      </section>
+
       <div className="noticias-grid">
         {noticias.length > 0 ? (
           noticias.map((noticia) => <Noticia key={noticia.id} noticia={noticia} />)

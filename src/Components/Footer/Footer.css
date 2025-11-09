@@ -4,7 +4,7 @@
   --fg-200:#e6e6e6;
   --muted:#a1a1aa;
   --line:#1b1b1f;
-  --accent:#e11d48; /* rojo DataNews */
+  --accent:#e11d48;
 }
 
 .container{
@@ -28,7 +28,14 @@
   padding: 2.5rem 0;
   border-bottom: 1px solid var(--line);
 }
-@media (min-width: 768px){
+
+/* Responsive */
+@media (min-width: 640px){
+  .footer__grid{
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 992px){
   .footer__grid{
     grid-template-columns: repeat(3, 1fr);
   }
@@ -81,13 +88,11 @@
   color: #c9c9cf;
   text-decoration: none;
   transition: color .2s ease;
+  word-break: break-word; 
 }
-.footer__link:hover{
-  color: #fff;
-}
+.footer__link:hover{ color: #fff; }
 
 /* Contacto */
-
 .footer__contact {
   list-style: none;
   margin: 0.75rem 0 0;
@@ -95,28 +100,25 @@
   color: #c9c9cf;
   font-size: 0.9rem;
 }
-
 .footer__contact li {
   display: flex;
   align-items: center;
   gap: 0.6rem;
   margin-bottom: 0.4rem;
 }
-
 .footer__icon {
   color: var(--accent);
   font-size: 0.9rem;
   flex-shrink: 0;
 }
 
-/* Redes sociales*/
-
+/* Redes sociales */
 .footer__socials {
   margin-top: 1rem;
   display: flex;
   gap: 0.5rem;
+  flex-wrap: wrap;          
 }
-
 .chip {
   display: inline-grid;
   place-items: center;
@@ -127,12 +129,10 @@
   background: #0f0f13;
   transition: all 0.2s ease;
 }
-
 .chip:hover {
   border-color: #2d2d35;
   background: #15151b;
 }
-
 .icon {
   width: 20px;
   height: 20px;
@@ -140,7 +140,6 @@
   transition: all 0.25s ease;
 }
 
-/* 🎨 Efecto hover: animación y color principal */
 .chip:hover .icon {
   fill: var(--accent);
   transform: scale(1.15);
@@ -174,4 +173,23 @@
 .footer__credit span{
   color: var(--accent);
   font-weight: 700;
+}
+
+/* Móviles */
+@media (max-width: 480px){
+  .footer__nav{
+    grid-template-columns: 1fr; 
+    gap: .5rem 1rem;
+  }
+  .footer__title{ font-size: .9rem; }
+  .footer__tagline{ font-size: .88rem; }
+  .footer__contact{ font-size: .88rem; }
+  .icon{ width: 18px; height: 18px; }  
+  .chip{ width: 34px; height: 34px; border-radius: 9px; }
+}
+
+@media (max-width: 768px){
+  .footer__grid{ padding: 2rem 0; gap: 1.5rem; }
+  .footer__nav{ gap: .75rem 1.25rem; }
+  .container{ padding: 0 .875rem; }
 }

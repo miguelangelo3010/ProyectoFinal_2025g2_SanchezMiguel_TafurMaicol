@@ -1,4 +1,3 @@
-// src/pages/PanelEditor/PanelEditor.jsx
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { onAuthStateChanged } from "firebase/auth";
@@ -6,17 +5,18 @@ import { collection, query, where, getDocs, updateDoc, doc, serverTimestamp } fr
 import { auth, db } from "../../Firebase/ConfigFirebase";
 import Noticia from "../../Components/Noticia/Noticia.jsx";
 import HeaderEditor from "../../Components/HeaderEditor/HeaderEditor.jsx";
-import "./PanelEditorPage.css";
+
 
 const PanelEditor = () => {
     const [usuario, setUsuario] = useState(null);
     const [noticias, setNoticias] = useState([]);
     const [cargando, setCargando] = useState(true);
     const [mensaje, setMensaje] = useState("");
+    
     const navigate = useNavigate();
 
     useEffect(() => {
-        // 🧩 Detectar usuario logueado
+        //  Detectar usuario logueado
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (user) {
                 setUsuario(user);
@@ -30,7 +30,7 @@ const PanelEditor = () => {
         return () => unsubscribe();
     }, []);
 
-    // 📰 Obtener solo noticias con estado "Terminado"
+    // Obtener solo noticias con estado "Terminado"
     const obtenerNoticias = async () => {
         try {
             const noticiasRef = collection(db, "noticias");
@@ -46,8 +46,6 @@ const PanelEditor = () => {
         }
     };
 
-    // ✅ Función para publicar noticia
-    // ✅ Función para publicar noticia
 const handlePublicar = async (id) => {
   try {
     if (!usuario) return alert("No hay editor autenticado.");
@@ -66,11 +64,12 @@ await updateDoc(docRef, {
       prev.map((n) => (n.id === id ? { ...n, estado: "Publicado", aprobadoPor: usuario.uid } : n))
     );
 
-    setMensaje("✅ Noticia publicada correctamente.");
+    setMensaje(" Noticia publicada correctamente.");
     setTimeout(() => setMensaje(""), 2000);
+    await obtenerNoticias();
   } catch (error) {
     console.error("Error al publicar noticia:", error);
-    setMensaje("❌ Error al publicar la noticia.");
+    setMensaje(" Error al publicar la noticia.");
   }
 };
 
@@ -78,13 +77,14 @@ await updateDoc(docRef, {
     if (cargando) return <p className="loading">Cargando noticias...</p>;
 
     return (
+        <>
+        <HeaderEditor />
         <div className="panel-editor-container">
-            <HeaderEditor />
+            
             <header className="panel-header">
 
-                <h1 className="titulo-panel">Noticias El Ahora</h1>
                 {usuario && (
-                    <h2 className="saludo">
+                    <h2 className="titulo-panel">
                         Bienvenido Editor,{" "}
                         <span>{usuario.displayName || usuario.email}</span>
                     </h2>
@@ -103,23 +103,35 @@ await updateDoc(docRef, {
                 <div className="noticias-grid">
                     {noticias.map((noticia) => (
                         <div key={noticia.id} className="noticia-card-wrapper">
-                            <Noticia noticia={noticia} modoEditor={true} /> {/* ✅ Cambiado */}
-                            <button
+                            <Noticia noticia={noticia} modoEditor={true} /> 
+                            <div className="acciones">
+                                                            <button
                                 onClick={() => handlePublicar(noticia.id)}
                                 disabled={noticia.estado === "Publicado"}
                                 className={`btn-publicar ${noticia.estado === "Publicado" ? "publicado" : ""
                                     }`}
                             >
                                 {noticia.estado === "Publicado"
-                                    ? "✅ Publicada"
-                                    : "📢 Publicar"}
+                                    ? "Publicada"
+                                    : "Publicar"}
                             </button>
+                            <button
+                            onClick={() => navigate(`/panel/editor/devolver/${noticia.id}`)}
+                            className="btn-devolver"
+                            >
+                            Devolver a reportero
+                            </button>
+
+                            </div>
+
+
                         </div>
                     ))}
                 </div>
 
             )}
         </div>
+        </>
     );
 };
 

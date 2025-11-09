@@ -1,4 +1,4 @@
-// src/pages/PanelEditor/EditarSeccion.jsx
+
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc, updateDoc, serverTimestamp } from "firebase/firestore";
@@ -16,7 +16,7 @@ const EditarSeccion = () => {
   const [mensaje, setMensaje] = useState("");
   const [cargando, setCargando] = useState(true);
 
-  // 🧩 Cargar datos de la sección
+  // Cargar datos de la sección
   useEffect(() => {
     const obtenerSeccion = async () => {
       try {
@@ -29,11 +29,11 @@ const EditarSeccion = () => {
           setDescripcion(data.descripcion || "");
           setEstado(data.estado || "activo");
         } else {
-          setMensaje("⚠️ No se encontró la sección.");
+          setMensaje("No se encontró la sección.");
         }
       } catch (error) {
         console.error("Error al obtener sección:", error);
-        setMensaje("❌ Error al cargar la sección.");
+        setMensaje("Error al cargar la sección.");
       } finally {
         setCargando(false);
       }
@@ -42,7 +42,7 @@ const EditarSeccion = () => {
     obtenerSeccion();
   }, [id]);
 
-  // 🔹 Generar slug automáticamente
+  //  Generar slug automáticamente
   const generarSlug = (texto) => {
     return texto
       .toLowerCase()
@@ -56,12 +56,12 @@ const EditarSeccion = () => {
       .replace(/^-+|-+$/g, "");
   };
 
-  // 🧾 Guardar cambios
+  // Guardar cambios
   const handleActualizar = async (e) => {
     e.preventDefault();
 
     if (!nombre.trim() || !descripcion.trim()) {
-      setMensaje("⚠️ Todos los campos son obligatorios.");
+      setMensaje("Todos los campos son obligatorios.");
       return;
     }
 
@@ -75,11 +75,11 @@ const EditarSeccion = () => {
         fechaActualizacion: serverTimestamp(),
       });
 
-      setMensaje("✅ Sección actualizada correctamente.");
+      setMensaje(" Sección actualizada correctamente.");
       setTimeout(() => navigate("/panel/editor/secciones"), 1500);
     } catch (error) {
       console.error("Error al actualizar sección:", error);
-      setMensaje("❌ Error al guardar los cambios.");
+      setMensaje(" Error al guardar los cambios.");
     }
   };
 
@@ -117,7 +117,7 @@ const EditarSeccion = () => {
         </select>
 
         <button type="submit" className="btn-guardar">
-          💾 Guardar Cambios
+          Guardar Cambios
         </button>
 
         {mensaje && <p className="mensaje">{mensaje}</p>}

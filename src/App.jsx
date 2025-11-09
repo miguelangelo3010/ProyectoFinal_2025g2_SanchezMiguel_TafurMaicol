@@ -14,6 +14,8 @@ import CrearSeccion from "./Pages/PanelEditorPage/CrearSeccion/CrearSeccion.jsx"
 import EditarSeccion from "./Pages/PanelEditorPage/EditarSeccion/EditarSeccion.jsx";
 import NoticiasPorSeccion from "./Pages/NoticiasPorSeccion/NoticiasPorSeccion.jsx";
 import NoticiaDetalle from "./Pages/NoticiaDetalle/NoticiaDetalle.jsx";
+import DevolverNoticia from "./Pages/PanelEditorPage/DevolverNoticia/DevolverNoticia.jsx";
+import NoticiasDevueltas from "./Pages/NoticiasDevueltas/NoticiasDevueltas.jsx";
 
 function App() {
   const base = import.meta.env.BASE_URL;
@@ -37,6 +39,8 @@ function App() {
         <Route path="/panel/editor/secciones/editar/:id" element={<EditarSeccion />} />
         <Route path="/seccion/:nombreSeccion" element={<NoticiasPorSeccion />} />
         <Route path="/noticia/:id" element={<NoticiaDetalle />} />
+        <Route path="/panel/editor/devolver/:id" element={<DevolverNoticia />} />
+        <Route path="/panel/reportero/devueltas" element={<NoticiasDevueltas />} />
 
 
 

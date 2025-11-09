@@ -2,11 +2,12 @@
 import React, { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../../Firebase/ConfigFirebase";
+import { Link, useLocation } from "react-router-dom";
 import "./NavSecciones.css";
-import { Link } from "react-router-dom";
 
 const NavSecciones = () => {
   const [secciones, setSecciones] = useState([]);
+  const location = useLocation();
 
   useEffect(() => {
     const obtenerSecciones = async () => {
@@ -25,13 +26,35 @@ const NavSecciones = () => {
 
   return (
     <nav className="nav-secciones">
-      <ul>
-        {secciones.map((sec) => (
-          <li key={sec.id}>
-            <Link to={`/seccion/${sec.nombre.toLowerCase()}`}>{sec.nombre}</Link>
+      <div className="nav-container">
+        <ul className="nav-list">
+          {/* 🔹 Botón fijo de Inicio */}
+          <li className="nav-item">
+            <Link
+              to="/"
+              className={`nav-link ${location.pathname === "/" ? "active" : ""}`}
+            >
+              <span className="nav-pill">Inicio</span>
+            </Link>
           </li>
-        ))}
-      </ul>
+
+          {/* 🔹 Secciones dinámicas desde Firestore */}
+          {secciones.map((sec) => {
+            const path = `/seccion/${sec.nombre.toLowerCase()}`;
+            const isActive = location.pathname === path;
+            return (
+              <li key={sec.id} className="nav-item">
+                <Link
+                  to={path}
+                  className={`nav-link ${isActive ? "active" : ""}`}
+                >
+                  <span className="nav-pill">{sec.nombre}</span>
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
     </nav>
   );
 };

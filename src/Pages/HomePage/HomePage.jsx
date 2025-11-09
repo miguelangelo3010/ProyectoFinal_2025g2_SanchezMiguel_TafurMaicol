@@ -1,12 +1,11 @@
-// src/pages/HomePage.jsx
-import React from 'react';
 import Header from '../../Components/Header/Header';
 import NavSecciones from '../../Components/NavSecciones/NavSecciones';
-import CarouselNoticias from '../../Components/CarouselNoticias/CarouselNoticias'; // ✅ nuevo
+import CarouselNoticias from '../../Components/CarouselNoticias/CarouselNoticias'; 
 import NoticiasPage from '../NoticiasPage';
-import NoticiasLaterales from '../../Components/NoticiasLaterales/NoticiasLaterales'; // ✅ nuevo
+import NoticiasLaterales from '../../Components/NoticiasLaterales/NoticiasLaterales'; 
 import './HomePage.css';
 import Footer from '../../Components/Footer/Footer';
+import AcerdaDe from '../../Components/AcercaDe/AcercaDe';
 
 const HomePage = () => {
   return (
@@ -17,8 +16,10 @@ const HomePage = () => {
       <NavSecciones />
       <main className='Main'>
         <NoticiasPage />
-<NoticiasLaterales />
+        <NoticiasLaterales />
       </main>
+      <AcerdaDe />
+
       <Footer/>
     </div>
   );

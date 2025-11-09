@@ -1,4 +1,3 @@
-// src/pages/EditarNoticiaPage.jsx
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { doc, getDoc, updateDoc, serverTimestamp } from "firebase/firestore";
@@ -16,7 +15,7 @@ const EditarNoticiaPage = () => {
   const [mensaje, setMensaje] = useState("");
   const [cargando, setCargando] = useState(true);
 
-  // 🧠 Detectar usuario logueado y su rol
+  // Verificar autenticación y rol
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (user) => {
       if (user) {
@@ -36,7 +35,7 @@ const EditarNoticiaPage = () => {
     return () => unsubscribe();
   }, [navigate]);
 
-  // 🔍 Cargar datos de la noticia
+  // Cargar datos de la noticia
   useEffect(() => {
     const obtenerNoticia = async () => {
       try {
@@ -46,7 +45,7 @@ const EditarNoticiaPage = () => {
         if (docSnap.exists()) {
           setNoticia({ id: docSnap.id, ...docSnap.data() });
         } else {
-          setMensaje("⚠️ No se encontró la noticia.");
+          setMensaje("No se encontró la noticia.");
         }
       } catch (error) {
         console.error("Error al cargar la noticia:", error);
@@ -59,7 +58,7 @@ const EditarNoticiaPage = () => {
     obtenerNoticia();
   }, [id]);
 
-  // 💾 Actualizar noticia
+  // Actualizar noticia
   const handleActualizar = async (e) => {
     e.preventDefault();
     try {
@@ -74,9 +73,9 @@ const EditarNoticiaPage = () => {
         fechaActualizacion: serverTimestamp(),
       });
 
-      setMensaje("✅ Noticia actualizada correctamente.");
+      setMensaje("Noticia actualizada correctamente.");
 
-      // 🔀 Redirigir según rol
+      // Redirigir según rol
       setTimeout(() => {
         if (rol === "editor") {
           navigate("/panel/editor");
@@ -86,7 +85,7 @@ const EditarNoticiaPage = () => {
       }, 1200);
     } catch (error) {
       console.error("Error al actualizar noticia:", error);
-      setMensaje("❌ Error al actualizar la noticia.");
+      setMensaje("Error al actualizar la noticia.");
     }
   };
 
@@ -95,7 +94,7 @@ const EditarNoticiaPage = () => {
 
   return (
     <div className="editar-noticia-container">
-      <h2>✏️ Editar Noticia</h2>
+      <h2>Editar Noticia</h2>
 
       <form onSubmit={handleActualizar} className="editar-form">
         <label>Título</label>

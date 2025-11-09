@@ -1,9 +1,9 @@
-// src/pages/CrearNoticiaPage.jsx
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, addDoc, serverTimestamp } from "firebase/firestore";
 import { db, auth } from "../../Firebase/ConfigFirebase";
 import { onAuthStateChanged } from "firebase/auth";
 import "./CrearNoticiaPage.css";
+import { Link, useNavigate } from "react-router-dom";
 
 const CrearNoticiaPage = () => {
   const [usuario, setUsuario] = useState(null);
@@ -14,23 +14,23 @@ const CrearNoticiaPage = () => {
   const [categoria, setCategoria] = useState("");
   const [secciones, setSecciones] = useState([]);
   const [mensaje, setMensaje] = useState("");
-
-  // 🧩 Obtener usuario actual
+  const navigate = useNavigate();
+  // Verificar autenticación
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) setUsuario(user);
-      else window.location.href = "/login";
+      else navigate("/login");
     });
   }, []);
 
-  // 🗂️ Cargar secciones activas desde Firestore
+  // Cargar secciones activas desde Firestore
   useEffect(() => {
     const obtenerSecciones = async () => {
       try {
         const querySnapshot = await getDocs(collection(db, "secciones"));
         const lista = querySnapshot.docs
           .map((doc) => ({ id: doc.id, ...doc.data() }))
-          .filter((sec) => sec.estado === "activo"); // 👈 solo activas
+          .filter((sec) => sec.estado === "activo"); 
         setSecciones(lista);
       } catch (error) {
         console.error("Error al cargar secciones:", error);
@@ -39,12 +39,12 @@ const CrearNoticiaPage = () => {
     obtenerSecciones();
   }, []);
 
-  // 📰 Guardar noticia
+  // Guardar noticia
   const handleCrearNoticia = async (e) => {
     e.preventDefault();
 
     if (!titulo.trim() || !contenido.trim() || !categoria) {
-      setMensaje("⚠️ Todos los campos son obligatorios.");
+      setMensaje("Todos los campos son obligatorios.");
       return;
     }
 
@@ -61,17 +61,17 @@ const CrearNoticiaPage = () => {
         fechaCreacion: serverTimestamp(),
       });
 
-      setMensaje("✅ Noticia creada correctamente.");
+      setMensaje("Noticia creada correctamente.");
       setTimeout(() => navigate("/panel/reportero"), 1500);
     } catch (error) {
       console.error("Error al crear noticia:", error);
-      setMensaje("❌ Error al guardar la noticia.");
+      setMensaje("Error al guardar la noticia.");
     }
   };
 
   return (
     <div className="crear-noticia-container">
-      <h1>📰 Crear Nueva Noticia</h1>
+      <h1>Crear Nueva Noticia</h1>
 
       <form onSubmit={handleCrearNoticia}>
         <label>Título</label>
@@ -110,7 +110,14 @@ const CrearNoticiaPage = () => {
           required
         ></textarea>
 
-        <button type="submit">💾 Guardar Noticia</button>
+        <button type="submit">Guardar Noticia</button>
+        <button className="boton">
+         <Link to="/panel/reportero"  className="boton-cancelar">
+          Cancelar
+        </Link>
+
+        </button>
+
         {mensaje && <p className="mensaje">{mensaje}</p>}
       </form>
     </div>

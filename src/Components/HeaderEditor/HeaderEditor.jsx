@@ -1,10 +1,18 @@
-// src/components/HeaderEditor/HeaderEditor.jsx
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Menu, User } from "lucide-react";
+import {
+  Menu as MenuIcon,
+  AccountCircle,
+  CheckCircle,
+  HighlightOff,
+  AssignmentTurnedIn,
+  Category,
+  Logout,
+} from "@mui/icons-material";
 import "./HeaderEditor.css";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../Firebase/ConfigFirebase";
+import logo from "../../Assets/LogoNoticias.png";
 
 const HeaderEditor = () => {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -27,29 +35,31 @@ const HeaderEditor = () => {
   };
 
   return (
-    <header className="header">
+    <header className="header-editor">
       {/* Botón menú izquierda */}
       <button className="menu-btn" onClick={toggleMenu}>
-        <Menu size={24} />
+        <MenuIcon fontSize="large" />
       </button>
 
-      {/* Título central */}
-      <h1 className="titulo-sitio">🗞️ Noticias El Ahora</h1>
+      {/* Logo y título */}
+      <h1 className="titulo-sitio">
+        <img className="logo" src={logo} alt="Logo" />
+        Noticias <span className="badge">El Ahora</span>
+      </h1>
 
-      {/* Icono usuario derecha */}
+      {/* Icono usuario */}
       <div className="acciones">
         <button className="usuario-btn" onClick={toggleUserMenu}>
-          <User size={24} />
+          <AccountCircle fontSize="large" />
         </button>
 
-        {/* Menú desplegable usuario */}
         {userMenuAbierto && (
           <div className="user-dropdown">
             <p><strong>{usuario?.displayName || "Editor"}</strong></p>
-            <p>{usuario?.email}</p>
+            <p className="email">{usuario?.email}</p>
             <hr />
             <button onClick={handleCerrarSesion} className="btn-logout">
-              Cerrar sesión
+              <Logout fontSize="small" /> Cerrar sesión
             </button>
           </div>
         )}
@@ -60,29 +70,27 @@ const HeaderEditor = () => {
         <ul>
           <li>
             <Link to="/panel/editor" onClick={toggleMenu}>
-              🕵️‍♂️ Noticias para Revisión
+              <AssignmentTurnedIn /> Noticias para Revisión
             </Link>
           </li>
           <li>
             <Link to="/panel/editor/publicadas" onClick={toggleMenu}>
-              ✅ Noticias Publicadas
+              <CheckCircle /> Noticias Publicadas
             </Link>
           </li>
           <li>
             <Link to="/panel/editor/desactivadas" onClick={toggleMenu}>
-              🚫 Noticias Desactivadas
+              <HighlightOff /> Noticias Desactivadas
             </Link>
           </li>
-                    <li>
+          <li>
             <Link to="/panel/editor/secciones" onClick={toggleMenu}>
-               Secciones
+              <Category /> Secciones
             </Link>
           </li>
-
         </ul>
       </nav>
 
-      {/* Capa para cerrar el menú al hacer clic fuera */}
       {menuAbierto && <div className="overlay" onClick={toggleMenu}></div>}
     </header>
   );

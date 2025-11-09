@@ -1,4 +1,3 @@
-// src/Components/NoticiasLaterales/NoticiasLaterales.jsx
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, query, where, orderBy, limit } from "firebase/firestore";
 import { db } from "../../Firebase/ConfigFirebase";
@@ -12,12 +11,11 @@ const NoticiasLaterales = () => {
   useEffect(() => {
     const obtenerNoticias = async () => {
       try {
-        // 🔹 Solo las publicadas, ordenadas por fecha más reciente
         const q = query(
           collection(db, "noticias"),
           where("estado", "==", "Publicado"),
           orderBy("fechaActualizacion", "desc"),
-          limit(10) // muestra solo las 10 más recientes
+          limit(10)
         );
         const querySnapshot = await getDocs(q);
         const lista = querySnapshot.docs.map((doc) => ({
@@ -27,28 +25,46 @@ const NoticiasLaterales = () => {
         setNoticias(lista);
       } catch (error) {
         console.error("Error al cargar las noticias laterales:", error);
+        setNoticias([]); 
       }
     };
     obtenerNoticias();
   }, []);
 
   return (
-    <aside className="noticias-laterales">
-      <h3>🗞️ Últimas noticias</h3>
+    <aside className="noticias-laterales" aria-label="Últimas noticias">
+      <h3 className="nl__title">Últimas noticias</h3>
+
       {noticias.length === 0 ? (
-        <p>No hay noticias disponibles.</p>
+        <p className="nl__empty">No hay noticias disponibles.</p>
       ) : (
-        <ul>
-          {noticias.map((noticia) => (
-            <li
-              key={noticia.id}
-              className="noticia-item"
-              onClick={() => navigate(`/noticia/${noticia.id}`)}
-            >
-              <img src={noticia.imagen} alt={noticia.titulo} />
-              <span>{noticia.titulo}</span>
-            </li>
-          ))}
+        <ul className="nl__list">
+          {noticias.map((noticia) => {
+            const imgSrc =
+              noticia.imagen && typeof noticia.imagen === "string" && noticia.imagen.trim().length > 0
+                ? noticia.imagen
+                : "https://images.unsplash.com/photo-1495020689067-958852a7765e?q=80&w=1200&auto=format&fit=crop"; // fallback simple
+
+            return (
+              <li
+                key={noticia.id}
+                className="nl__item"
+                role="button"
+                tabIndex={0}
+                onClick={() => navigate(`/noticia/${noticia.id}`)}
+                onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && navigate(`/noticia/${noticia.id}`)}
+                title={noticia.titulo}
+              >
+                <div className="nl__thumb">
+                  <img src={imgSrc} alt={noticia.titulo} loading="lazy" />
+                </div>
+                <div className="nl__meta">
+                  <span className="nl__tag">{noticia.categoria || "General"}</span>
+                  <h4 className="nl__headline">{noticia.titulo}</h4>
+                </div>
+              </li>
+            );
+          })}
         </ul>
       )}
     </aside>
@@ -56,3 +72,4 @@ const NoticiasLaterales = () => {
 };
 
 export default NoticiasLaterales;
+

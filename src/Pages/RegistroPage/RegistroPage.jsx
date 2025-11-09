@@ -1,4 +1,3 @@
-// src/pages/RegistroPage.jsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
@@ -20,11 +19,11 @@ const RegistroPage = () => {
   const handleRegistro = async (e) => {
     e.preventDefault();
     try {
-      // 1️⃣ Crear usuario en Auth
+      // Crear usuario en Auth
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
       const user = userCredential.user;
 
-      // 2️⃣ Subir foto al Storage (si hay)
+      // Subir foto al Storage
       let fotoURL = "";
       if (foto) {
         const fotoRef = ref(storage, `perfiles/${user.uid}`);
@@ -32,13 +31,13 @@ const RegistroPage = () => {
         fotoURL = await getDownloadURL(fotoRef);
       }
 
-      // 3️⃣ Actualizar perfil en Auth
+      // Actualizar perfil en Auth
       await updateProfile(user, {
         displayName: nombre,
         photoURL: fotoURL,
       });
 
-      // 4️⃣ Crear documento en Firestore
+      // Crear documento en Firestore
       await setDoc(doc(db, "usuarios", user.uid), {
         nombre,
         email,
@@ -48,7 +47,7 @@ const RegistroPage = () => {
         activo: true,
       });
 
-      setMensaje("✅ Registro exitoso. Ahora puedes iniciar sesión.");
+      setMensaje("Registro exitoso. Ahora puedes iniciar sesión.");
       setNombre("");
       setEmail("");
       setPassword("");
@@ -57,7 +56,7 @@ const RegistroPage = () => {
         navigate("/login");
       }, 1500);
     } catch (error) {
-      console.error("❌ Error al registrar usuario:", error);
+      console.error(" Error al registrar usuario:", error);
       setMensaje("Error: " + error.message);
     }
   };

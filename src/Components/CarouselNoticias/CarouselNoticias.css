@@ -1,20 +1,118 @@
-.carousel-noticias-container {
-  width: 100%;
-  margin: 0 auto;
-  margin-bottom: 30px;
-  max-height: 450px;
+/* Contenedor del carrusel */
+.carousel-slide {
+  position: relative;
+  width: 100vw;
+  height: 420px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   overflow: hidden;
-  border-radius: 10px;
+}
+
+/* Fondo desenfocado */
+.carousel-slide::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: inherit;
+  filter: blur(16px) brightness(0.4);
+  transform: scale(1.2);
+  z-index: 0;
+}
+
+.carousel-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  z-index: 1;
+  position: relative;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* Imagen izquierda */
+.carousel-img-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
 .carousel-img {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 12px;
   object-fit: cover;
-  height: 450px;
-  filter: brightness(0.8);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+  transition: transform 0.4s ease, filter 0.3s ease;
 }
 
-.carousel-caption-custom {
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 10px;
+.carousel-img:hover {
+  transform: scale(1.05);
+  filter: brightness(0.95);
+}
+
+/* Texto derecha */
+.carousel-text {
+  flex: 1;
+  color: #fff;
+  text-align: left;
+  z-index: 2;
+}
+
+.carousel-text h2 {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+  text-shadow: 0 3px 8px rgba(0, 0, 0, 0.5);
+}
+
+.carousel-text p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e8e8e8;
+  margin-bottom: 1.5rem;
+}
+
+.carousel-btn {
+  background: #0a58ca;
+  color: #fff;
+  padding: 10px 22px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.carousel-btn:hover {
+  background: #063e92;
+}
+
+
+@media (max-width: 992px) {
+  .carousel-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .carousel-img-container {
+    order: 1;
+  }
+  .carousel-text {
+    order: 2;
+    font-size: 12px;
+    text-align: center;
+  }
+  .carousel-img {
+    max-width: 80%;
+  }
 }

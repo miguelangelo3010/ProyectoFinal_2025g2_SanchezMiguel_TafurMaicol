@@ -28,7 +28,7 @@ const NoticiasPublicadasEditor = () => {
     return () => unsubscribe();
   }, []);
 
-  // 🔍 Obtener noticias publicadas por el editor autenticado
+  // Obtener noticias publicadas por el editor autenticado
   const obtenerNoticias = async (editorId) => {
     try {
       const noticiasRef = collection(db, "noticias");
@@ -49,7 +49,7 @@ const NoticiasPublicadasEditor = () => {
     }
   };
 
-  // 🚫 Función para desactivar noticia
+  // Función para desactivar noticia
   const handleDesactivar = async (id) => {
     try {
       const docRef = doc(db, "noticias", id);
@@ -61,22 +61,24 @@ const NoticiasPublicadasEditor = () => {
       // Actualiza la interfaz quitando la noticia
       setNoticias((prev) => prev.filter((n) => n.id !== id));
 
-      setMensaje("🚫 Noticia desactivada correctamente.");
+      setMensaje("Noticia desactivada correctamente.");
       setTimeout(() => setMensaje(""), 2000);
     } catch (error) {
       console.error("Error al desactivar noticia:", error);
-      setMensaje("❌ Error al desactivar la noticia.");
+      setMensaje("Error al desactivar la noticia.");
     }
   };
 
   if (cargando) return <p className="loading">Cargando noticias publicadas...</p>;
 
   return (
+    <>
+    <HeaderEditor />
     <div className="panel-editor-container">
-      <HeaderEditor />
+      
 
       <header className="panel-header">
-        <h1 className="titulo-panel">✅ Noticias Publicadas</h1>
+        <h1 className="titulo-panel">Noticias Publicadas</h1>
         {usuario && (
           <h2 className="saludo">
             Publicadas por <span>{usuario.displayName || usuario.email}</span>
@@ -97,13 +99,14 @@ const NoticiasPublicadasEditor = () => {
                 onClick={() => handleDesactivar(noticia.id)}
                 className="btn-desactivar"
               >
-                🚫 Desactivar
+                Desactivar
               </button>
             </div>
           ))}
         </div>
       )}
     </div>
+    </>
   );
 };
 

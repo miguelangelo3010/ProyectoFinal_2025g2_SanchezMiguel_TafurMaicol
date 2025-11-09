@@ -1,4 +1,3 @@
-// src/pages/PanelEditor/PanelSecciones.jsx
 import React, { useEffect, useState } from "react";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../../../Firebase/ConfigFirebase";
@@ -30,30 +29,32 @@ const PanelSecciones = () => {
     obtenerSecciones();
   }, []);
 
-  // 🔥 Función para eliminar una sección
+  // Función para eliminar una sección
   const handleEliminarSeccion = async (id, nombre) => {
     const confirmar = window.confirm(`¿Seguro que deseas eliminar la sección "${nombre}"?`);
     if (!confirmar) return;
 
     try {
       await deleteDoc(doc(db, "secciones", id));
-      setSecciones((prev) => prev.filter((s) => s.id !== id)); // 🧹 elimina del estado local
+      setSecciones((prev) => prev.filter((s) => s.id !== id)); 
       setMensaje(`🗑️ Sección "${nombre}" eliminada correctamente.`);
       setTimeout(() => setMensaje(""), 2500);
     } catch (error) {
       console.error("Error al eliminar sección:", error);
-      setMensaje("❌ Error al eliminar la sección.");
+      setMensaje("Error al eliminar la sección.");
     }
   };
 
   if (cargando) return <p className="loading">Cargando secciones...</p>;
 
   return (
+    <>
+    <HeaderEditor />
     <div className="panel-editor-container">
-      <HeaderEditor />
+      
 
       <header className="panel-header">
-        <h1 className="titulo-panel">📂 Gestión de Secciones</h1>
+        <h1 className="titulo-panel">Gestión de Secciones</h1>
         <p className="descripcion">
           Aquí puedes ver, editar o eliminar las secciones disponibles.
         </p>
@@ -61,7 +62,7 @@ const PanelSecciones = () => {
 
       {mensaje && <p className="mensaje">{mensaje}</p>}
                 <Link to="/panel/editor/secciones/nueva" className="btn-crear">
-  ➕ Nueva Sección
+  Nueva Sección
 </Link>
 
       <table className="tabla-secciones">
@@ -102,12 +103,12 @@ const PanelSecciones = () => {
                     <Link to={`/panel/editor/secciones/editar/${sec.id}`}>Editar</Link>
                   </button>
 
-                  {/* 🗑️ Botón de eliminar con evento */}
+                  {/*Botón de eliminar con evento */}
                   <button
                     className="btn-eliminar"
                     onClick={() => handleEliminarSeccion(sec.id, sec.nombre)}
                   >
-                    🗑️ Eliminar
+                    Eliminar
                   </button>
                 </td>
               </tr>
@@ -120,6 +121,7 @@ const PanelSecciones = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 

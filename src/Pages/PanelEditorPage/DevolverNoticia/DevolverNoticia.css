@@ -1,0 +1,67 @@
+.devolver-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.devolver-container h2 {
+  text-align: center;
+  color: #002b75;
+  margin-bottom: 20px;
+}
+
+.devolver-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.devolver-form label {
+  font-weight: 600;
+}
+
+.devolver-form textarea {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  resize: none;
+  font-size: 1rem;
+}
+
+.acciones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.acciones button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.acciones button[type="submit"] {
+  background-color: #d9534f;
+  color: white;
+}
+
+.acciones button[type="submit"]:hover {
+  background-color: #c9302c;
+}
+
+.acciones button[type="button"] {
+  background-color: #ccc;
+  color: #333;
+}
+
+.loading {
+  text-align: center;
+  padding: 40px;
+  color: #555;
+}

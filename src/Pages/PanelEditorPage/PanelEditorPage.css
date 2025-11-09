@@ -3,6 +3,8 @@
   min-height: 100vh;
   padding: 0;
   margin: 0;
+  width: 100%;
+  height: 100%;
 }
 
 .panel-header {
@@ -12,7 +14,7 @@
 }
 
 .titulo-panel {
-  color: #004aad;
+  color: #323233;
   margin: 0;
 }
 
@@ -22,7 +24,7 @@
 }
 
 .saludo span {
-  color: #004aad;
+  color: #ffffff;
 }
 
 .descripcion {
@@ -61,7 +63,7 @@
 .btn-publicar {
   margin-top: 10px;
   width: 100%;
-  background-color: #00796b;
+background-color: #00796b !important;
   color: white;
   border: none;
   border-radius: 6px;
@@ -71,7 +73,7 @@
 }
 
 .btn-publicar:hover {
-  background-color: #00695c;
+  background-color: #00695c ;
 }
 
 .btn-publicar.publicado,
@@ -85,4 +87,22 @@
   text-align: center;
   margin-top: 30px;
   color: #777;
+}
+
+
+/* Botón nuevo */
+.btn-devolver {
+  margin-top: 8px;
+  width: 100%;
+  background-color: #d9534f !important;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-devolver:hover {
+  background-color: #c9302c;
 }

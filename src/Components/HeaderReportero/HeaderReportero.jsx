@@ -1,10 +1,11 @@
-// src/components/HeaderEditor/HeaderEditor.jsx
 import React, { useState, useEffect } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { Menu, User } from "lucide-react";
 import "./HeaderReportero.css";
 import { onAuthStateChanged, signOut } from "firebase/auth";
 import { auth } from "../../Firebase/ConfigFirebase";
+
+import logo from "../../Assets/LogoNoticias.png";
 
 const HeaderReportero = () => {
   const [menuAbierto, setMenuAbierto] = useState(false);
@@ -35,7 +36,7 @@ const HeaderReportero = () => {
       </button>
 
       {/* Título central */}
-      <h1 className="titulo-sitio">🗞️ Noticias El Ahora</h1>
+            <h1 className="titulo-sitio"> <img  className="logo" src={logo} alt="" /> Noticias <span className="footer__badge">El Ahora</span></h1>
 
       {/* Icono usuario derecha */}
       <div className="acciones">
@@ -60,20 +61,14 @@ const HeaderReportero = () => {
       <nav className={`menu-lateral ${menuAbierto ? "abierto" : ""}`}>
         <ul>
           <li>
-            <Link to="/panel/editor" onClick={toggleMenu}>
-              🕵️‍♂️ Noticias para Revisión
+            <Link to="/panel/reportero" onClick={toggleMenu}>
+              Mis Noticias
             </Link>
           </li>
           <li>
-            <Link to="/panel/editor/publicadas" onClick={toggleMenu}>
-              ✅ Noticias Publicadas
-            </Link>
+            <Link to="/panel/reportero/devueltas">Noticias Devueltas</Link>
           </li>
-          <li>
-            <Link to="/panel/editor/desactivadas" onClick={toggleMenu}>
-              🚫 Noticias Desactivadas
-            </Link>
-          </li>
+
         </ul>
       </nav>
 
