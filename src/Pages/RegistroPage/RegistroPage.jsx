@@ -34,7 +34,7 @@ const RegistroPage = () => {
       // Actualizar perfil en Auth
       await updateProfile(user, {
         displayName: nombre,
-        photoURL: fotoURL,
+        photoURL: foto,
       });
 
       // Crear documento en Firestore
@@ -42,7 +42,7 @@ const RegistroPage = () => {
         nombre,
         email,
         rol,
-        fotoPerfil: fotoURL,
+        fotoPerfil: foto,
         fechaRegistro: new Date(),
         activo: true,
       });
@@ -51,7 +51,7 @@ const RegistroPage = () => {
       setNombre("");
       setEmail("");
       setPassword("");
-      setFoto(null);
+      setFoto("");
       setTimeout(() => {
         navigate("/login");
       }, 1500);
@@ -63,8 +63,9 @@ const RegistroPage = () => {
 
   return (
     <div className="registro-container">
-      <h2>Registro de Usuario</h2>
+      
       <form onSubmit={handleRegistro} className="registro-form">
+        <h2>Registro de Usuario</h2>
         <label>Nombre completo</label>
         <input
           type="text"
@@ -96,7 +97,16 @@ const RegistroPage = () => {
         </select>
 
         <label>Foto de perfil</label>
-        <input type="file" accept="image/*" onChange={(e) => setFoto(e.target.files[0])} />
+        <input
+          type="text"
+          placeholder="Pega la URL de tu foto de perfil"
+          value={foto}
+          onChange={(e) => setFoto(e.target.value)}
+        />
+
+        {/* Mostrar vista previa */}
+        {foto && <img src={foto} alt="Perfil" className="profile-preview" />}
+
 
         <button type="submit">Registrarse</button>
       </form>
