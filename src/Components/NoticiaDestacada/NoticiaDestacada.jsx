@@ -1,5 +1,6 @@
 import React from "react";
 import "./NoticiaDestacada.css";
+import { Link } from "react-router-dom";
 
 const NoticiaDestacada = ({ noticia }) => {
   return (
@@ -10,9 +11,9 @@ const NoticiaDestacada = ({ noticia }) => {
       <div className="destacada-content">
         <h2>{noticia.titulo}</h2>
         <p>{noticia.subtitulo}</p>
-        <a href={`/noticia/${noticia.id}`} className="btn-leer">
-          Leer más →
-        </a>
+        <Link to={`/noticia/${noticia.id}`} className="btn-leer">
+          Leer más 
+        </Link>
       </div>
     </div>
   );
