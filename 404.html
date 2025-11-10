@@ -1,23 +1,18 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
   <head>
+    <meta charset="UTF-8" />
     <meta http-equiv="refresh" content="0; url=/" />
+    <title>Redirigiendo...</title>
+    <script>
+      // Obtiene la ruta actual que GitHub Pages no encontró
+      const path = window.location.pathname;
+
+      const base = window.location.origin + '/ProyectoFinal_2025g2_SanchezMiguel_TafurMaicol/'; 
+      window.location.replace(base + '#' + path);
+    </script>
   </head>
   <body>
-    <p>Redirigiendo...</p>
-    <script>
-      // Redirige a la SPA conservando la ruta original
-      const redirectTo = window.location.pathname;
-      sessionStorage.redirect = redirectTo;
-      window.location.href = "/";
-    </script>
-    <script>
-        if (sessionStorage.redirect) {
-            const redirect = sessionStorage.redirect;
-            delete sessionStorage.redirect;
-            window.history.replaceState(null, null, redirect);
-        }
-        </script>
-
+    <p>Redirigiendo a la aplicación...</p>
   </body>
 </html>
