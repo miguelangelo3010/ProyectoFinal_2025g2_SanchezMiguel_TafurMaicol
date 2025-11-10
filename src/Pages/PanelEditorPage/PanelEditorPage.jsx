@@ -46,6 +46,8 @@ const PanelEditor = () => {
         }
     };
 
+
+
 const handlePublicar = async (id) => {
   try {
     if (!usuario) return alert("No hay editor autenticado.");
@@ -104,6 +106,7 @@ await updateDoc(docRef, {
                     {noticias.map((noticia) => (
                         <div key={noticia.id} className="noticia-card-wrapper">
                             <Noticia noticia={noticia} modoEditor={true} /> 
+                            
                             <div className="acciones">
                                                             <button
                                 onClick={() => handlePublicar(noticia.id)}

@@ -56,6 +56,10 @@ const PanelReportero = () => {
     setNoticiasFiltradas(lista);
   };
 
+    const handleNoticiaEliminada = (id) => {
+    setNoticias((prev) => prev.filter((n) => n.id !== id));
+  };
+
   // Filtro dinámico por estado o búsqueda
   useEffect(() => {
     let filtradas = noticias;
@@ -139,7 +143,12 @@ const PanelReportero = () => {
       ) : (
         <div className="noticias-grid">
           {noticiasFiltradas.map((noticia) => (
-            <Noticia key={noticia.id} noticia={noticia} modoReportero={true} />
+                    <Noticia
+                      key={noticia.id}
+                      noticia={noticia}
+                      modoReportero={true}
+                      onEliminar={handleNoticiaEliminada}
+                    />
           ))}
         </div>
       )}

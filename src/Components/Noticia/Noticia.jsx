@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { doc, updateDoc, serverTimestamp, deleteDoc } from "firebase/firestore";
 import { db } from "../../Firebase/ConfigFirebase";
 
-const Noticia = ({ noticia, modoReportero = false, modoEditor = false }) => {
+const Noticia = ({ noticia, modoReportero = false, modoEditor = false, onEliminar }) => {
   const navigate = useNavigate();
   const [estado, setEstado] = useState(noticia.estado || "Edición");
   const [enviando, setEnviando] = useState(false);
@@ -29,30 +29,34 @@ const Noticia = ({ noticia, modoReportero = false, modoEditor = false }) => {
   };
 
   // Eliminar noticia 
-  const handleEliminarNoticia = async () => {
-    if (estado !== "Edición") {
-      alert("Solo puedes eliminar noticias en estado 'Edición'.");
-      return;
-    }
+const handleEliminarNoticia = async () => {
+  if (estado !== "Edición") {
+    alert("Solo puedes eliminar noticias en estado 'Edición'.");
+    return;
+  }
 
-    const confirmar = window.confirm(
-      `¿Seguro que deseas eliminar la noticia "${noticia.titulo}"?`
-    );
-    if (!confirmar) return;
+  const confirmar = window.confirm(
+    `¿Seguro que deseas eliminar la noticia "${noticia.titulo}"?`
+  );
+  if (!confirmar) return;
 
-    try {
-      setEliminando(true);
-      const docRef = doc(db, "noticias", noticia.id);
-      await deleteDoc(docRef);
-      alert("Noticia eliminada correctamente.");
-      navigate("/panel/reportero"); 
-    } catch (error) {
-      console.error("Error al eliminar noticia:", error);
-      alert("Error al eliminar la noticia.");
-    } finally {
-      setEliminando(false);
-    }
-  };
+  try {
+    setEliminando(true);
+    const docRef = doc(db, "noticias", noticia.id);
+    await deleteDoc(docRef);
+    alert("Noticia eliminada correctamente.");
+
+    // Informar al padre para actualizar la lista
+    if (onEliminar) onEliminar(noticia.id);
+
+  } catch (error) {
+    console.error("Error al eliminar noticia:", error);
+    alert("Error al eliminar la noticia.");
+  } finally {
+    setEliminando(false);
+  }
+};
+
 
   const puedeEditar = estado === "Edición";
 
