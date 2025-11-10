@@ -45,7 +45,7 @@ const Noticia = ({ noticia, modoReportero = false, modoEditor = false }) => {
       const docRef = doc(db, "noticias", noticia.id);
       await deleteDoc(docRef);
       alert("Noticia eliminada correctamente.");
-      window.location.reload(); 
+      navigate("/panel/reportero"); 
     } catch (error) {
       console.error("Error al eliminar noticia:", error);
       alert("Error al eliminar la noticia.");
